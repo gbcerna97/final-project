@@ -81,7 +81,7 @@
           py-2.5
           text-center
           dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800
-        "> Sign in </button>
+        "> Login </button>
       </form>
 
       <small class="text-center">No account yet? Register <NuxtLink class="text-dark link-opacity-100-hover mt-4" to="/user/register">here.</NuxtLink></small>
@@ -90,25 +90,25 @@
 </template>
 <script>
   export default {
-    auth: 'guest',
+    auth: 'guest', // Set authentication level to 'guest' for this component
     data() {
       return {
-        err: null,
-        email: '',
-        password: '',
+        err: null, // Initialize the error message as null
+        email: '', // Initialize email input field as an empty string
+        password: '', // Initialize password input field as an empty string
       }
     },
     methods: {
-      async userLogin() {
+      async userLogin() { // Define a method for user login
         try {
           await this.$auth.loginWith('local', {
             data: {
-              identifier: this.email,
-              password: this.password
+              identifier: this.email, // Get the entered email
+              password: this.password // Get the entered password
             },
           })
         } catch (e) {
-          if (e.response) this.err = e.response.data.error.message
+          if (e.response) this.err = e.response.data.error.message // Set the error message if there is a response error
         }
       },
     },
@@ -175,7 +175,7 @@
     flex-wrap: wrap;
   }
 
-  /* Create two unequal columns that sits next to each other */
+  /* Create two unequal columns that sit next to each other */
   /* Sidebar/left column */
   .side {
     -ms-flex: 30%;

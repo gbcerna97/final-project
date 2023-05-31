@@ -28,44 +28,45 @@
 </template>
 <script>
   export default {
-    auth: 'guest',
+    auth: 'guest', // Set authentication level to 'guest' for this component
     data() {
       return {
-        success: false,
-        err: null,
-        username: '',
-        email: '',
-        password: '',
+        success: false, // Initialize success flag as false
+        err: null, // Initialize the error message as null
+        username: '', // Initialize username input field as an empty string
+        email: '', // Initialize email input field as an empty string
+        password: '', // Initialize password input field as an empty string
       }
     },
     methods: {
-      async userRegister() {
+      async userRegister() { // Define a method for user registration
         try {
-          this.$axios.setToken(false)
+          this.$axios.setToken(false) // Set the token to false to clear any existing token
           await this.$axios.post('http://localhost:1337/api/auth/local/register', {
-            username: this.username,
-            email: this.email,
-            password: this.password,
+            username: this.username, // Get the entered username
+            email: this.email, // Get the entered email
+            password: this.password, // Get the entered password
           })
-          this.success = true
-          // Display success message
+          this.success = true // Set the success flag to true
+          // Display success message and redirect to login page after 3 seconds
           setTimeout(() => {
             window.location.href = 'http://localhost:3000/user/login';
           }, 3000);
           this.$toast.success('Your account has been created successfully!', {
             duration: 5000,
           })
-          // Redirect to login page
+          // Redirect to login page using Vue Router
           this.$router.push('http://localhost:3000/user/login')
         } catch (e) {
           if (e.response && e.response.data && e.response.data.error) {
-            this.err = e.response.data.error.message
+            this.err = e.response.data.error.message // Set the error message if there is a response error
           }
         }
       },
     },
   }
 </script>
+
 <style>
   * {
     box-sizing: border-box;
