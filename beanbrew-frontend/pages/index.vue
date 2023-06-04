@@ -7,7 +7,6 @@
           <div class="row justify-content-start align-items-center">
             <div class="col-lg-6 video-right justify-content-center align-items-center d-flex">
               <div class="overlay overlay-bg"></div>
-              <a class="play-btn" href="https://www.youtube.com/watch?v=ARA0AxrnHdM"><img class="img-fluid" src="~/assets/img/play-icon.png" alt=""></a>
             </div>
             <div class="col-lg-6 video-left">
               <h6>Freshly brewed Coffee.</h6>
@@ -17,7 +16,7 @@
               <p>
                   Discover the perfect cup of freshly brewed coffee at our coffee shop. Savor the rich aroma and bold flavors that will awaken your senses and leave you craving for more.
               </p>
-              <img class="img-fluid" src="~assets/img/signature.png" alt="">
+              <img class="img-fluid" width="150" src="~assets/img/signature.png" alt="">
             </div>
           </div>
         </div>
@@ -38,14 +37,15 @@
 
           <div class="row">
             <div v-for="product in products" :key="product.id" class="col-lg-4">
-              <div class="single-menu" style="min-height: 300px;">
-                <div class="title-div justify-content-between d-flex">
-                  <h4>{{ product.Name }}</h4>
-                  <p class="price float-right">₱{{ product.Price }}</p>
-                </div>
-                <p>{{ product.Description }}</p>
+            <div class="single-menu" style="min-height: 500px;">
+              <img class="mb-2" :src="`http://localhost:1337${product.Image.data.attributes.formats.small.url}`" style="width: 300px; height: 200px; object-fit: cover;">
+              <div class="title-div justify-content-between d-flex">
+                <h4>{{ product.Name }}</h4>
+                <p class="price float-right">₱{{ product.Price }}</p>
               </div>
+              <p>{{ product.Description }}</p>
             </div>
+          </div>
         </div>
 		  </div>  
 		</section>

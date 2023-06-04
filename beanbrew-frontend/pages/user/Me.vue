@@ -67,13 +67,17 @@
   </div>
 </template>
 <script>
-  import {
-    mapGetters
-  } from 'vuex'
+  import { mapGetters } from 'vuex';
+
   export default {
     middleware: 'auth',
     computed: {
       ...mapGetters(['loggedInUser']),
     },
-  }
+    created() {
+      if (!this.loggedInUser) {
+        this.$router.replace('/user/login');
+      }
+    },
+  };
 </script>

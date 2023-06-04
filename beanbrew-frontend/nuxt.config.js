@@ -58,7 +58,6 @@ export default {
       { src: 'https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js' },
       { src: 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js', integrity: 'sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q', crossorigin: 'anonymous' },
       { src: '~/assets/js/vendor/bootstrap.min.js' },
-      { src: 'https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY' },
       { src: '~/assets/js/easing.min.js' },
       { src: '~/assets/js/hoverIntent.js' },
       { src: '~/assets/js/superfish.min.js' },
@@ -78,7 +77,6 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    'bootstrap/dist/css/bootstrap.css',
     '~/assets/css/linearicons.css',
     '~/assets/css/font-awesome.min.css',
     '~/assets/css/bootstrap.css',
