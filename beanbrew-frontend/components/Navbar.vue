@@ -35,12 +35,12 @@ import { mapGetters } from 'vuex';
 
 export default {
   computed: {
-    ...mapGetters(['isAuthenticated']), // Map the 'isAuthenticated' getter from Vuex
+    ...mapGetters(['isAuthenticated']),
   },
   methods: {
     async userLogout() {
-      await this.$auth.logout(); // Call the logout method provided by the authentication plugin
-      this.$router.push('user/login'); // Redirect to the login page after logout
+      await this.$auth.logout();
+      this.$router.push('/user/login'); // Update the route path to '/user/login'
     },
   },
 };

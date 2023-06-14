@@ -57,8 +57,8 @@
           <div class="row d-flex justify-content-center">
             <div class="menu-content pb-60 col-lg-10">
               <div class="title text-center">
-                <h1 class="mb-10">What kind of Coffee we serve for you</h1>
-                <p>Who are in extremely love with eco friendly system.</p>
+                <h1 class="mb-10">Bean & Brew Cafe & Pastries</h1>
+                <p>Serving you with love and passion.</p>
               </div>
             </div>
           </div>
@@ -94,6 +94,7 @@
       <!-- End gallery Area -->
 
       <ApiComponent/>
+      <CommentComponent/>
 
   </div>
 </template>
@@ -102,12 +103,14 @@
 import { ref, onMounted } from 'vue';
 import Navbar from '@/components/Navbar';
 import ApiComponent from '@/components/ApiComponent';
+import CommentComponent from '@/components/CommentComponent';
 
 export default {
   name: 'HomePage',
   components: {
     Navbar,
     ApiComponent,
+    CommentComponent,
   },
   setup() {
     // Define a reactive reference for the products data
@@ -116,13 +119,17 @@ export default {
     // Define an async function to fetch the products data
     const fetchProducts = async () => {
       try {
-        // Make a request to the API endpoint to fetch the products data
-        const response = await fetch('http://localhost:1337/api/products?populate=*');
-        const data = await response.json();
-        // Extract the necessary attributes from the fetched data and update the products ref
-        products.value = data.data.map(item => item.attributes);
+        const cachedProducts = localStorage.getItem('products');
+        if (cachedProducts) {
+          products.value = JSON.parse(cachedProducts);
+        } else {
+          const response = await fetch('http://localhost:1337/api/products?populate=*');
+          const data = await response.json();
+          products.value = data.data.map(item => item.attributes);
+          localStorage.setItem('products', JSON.stringify(products.value));
+        }
       } catch (error) {
-        // Handle any errors that occur during the fetch request
+        console.error('Failed to fetch products:', error);
       }
     };
 
@@ -136,7 +143,6 @@ export default {
   }
 }
 </script>
-
 <style>
 
 </style>

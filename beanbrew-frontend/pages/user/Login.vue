@@ -84,7 +84,12 @@
         "> Login </button>
       </form>
 
-      <small class="text-center">No account yet? Register <NuxtLink class="text-dark link-opacity-100-hover mt-4" to="/user/register">here.</NuxtLink></small>
+      <small class="text-center">No account yet? Register 
+        <NuxtLink class="text-dark link-opacity-100-hover mt-4" to="/user/register">here.</NuxtLink>
+      </small>
+      <!-- <small class="text-center">Forgot password? Click
+          <NuxtLink class="text-dark link-opacity-100-hover mt-4" to="/user/forgot-password">here.</NuxtLink>
+      </small> -->
     </div>
   </div>
 </template>
